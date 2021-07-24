@@ -27,6 +27,26 @@ public class CarController {
         return JSONResult.ok(cars);
     }
 
+    @PostMapping("buyById/{id}")
+    public String buyById(@PathVariable int id){
+        Car car = carService.findById(id);
+        if (car == null){
+
+            return "数量不足，请重新选择";
+        }else{
+            carService.deleteById(id);
+            return "购买成功";
+        }
+
+
+    }
+
+    @GetMapping("findCarByPage/{currentPage}/{pageSize}")
+    public JSONResult findCarByPage(@PathVariable int currentPage,@PathVariable int pageSize ){
+        List<Car> cars = carService.findCarByPage(currentPage,pageSize);
+        return JSONResult.ok(cars);
+    }
+
     /**
      * 通过id查询
      *

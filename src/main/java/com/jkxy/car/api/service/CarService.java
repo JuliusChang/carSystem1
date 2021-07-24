@@ -11,6 +11,8 @@ public interface CarService {
 
     Car findById(int id);
 
+    List<Car> findCarByPage(int currentPage, int pageSize);
+
     List<Car> findByCarName(String carName);
 
     void deleteById(int id);

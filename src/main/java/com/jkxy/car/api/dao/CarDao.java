@@ -11,6 +11,9 @@ public interface CarDao {
     @Select("select * from carMessage")
     List<Car> findAll();
 
+    @Select("select * from carMessage limit #{start},#{size}")
+    List<Car> findCarByPage(int start, int size);
+
     @Select("select * from carMessage where id = #{id}")
     Car findById(int id);
 
